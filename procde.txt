@@ -1,0 +1,94 @@
+1. pipenv install django djangorestframework django-rest-knox
+2.startproject leadmanager
+3.make the the application leads
+4.save the lead and rest_framework in the installed apps under the settings file
+5.create the leads model
+-add the model to the admin
+6.make the migrations and migrate
+7.under leads app create the serializer .py file
+8.create the api.py file
+9.create the urls --> make it available in the main project app
+
+
+step two
+
+1.make the frontend app
+----------------src folder
+===================components folder
+
+----------------static folder
+===================frontend folder
+----------------templates folder
+===================frontend folder
+
+- go to the root file of the project and run npm init -y
+- initialize the app with git
+make the .gitignore file in root file
+go to gitignore.io and type django to get gitignore for django
+2 install the dependacies -D
+@babel/core
+@babel/preset-env
+@babel/preset-react
+babel-loader
+babel-plugin-transform-class-properties
+- instll the -D 
+webpack
+webpack-cli
+3.instal 
+prop-types
+react
+react-dom
+4.use the .babelrc file t o usee presets in root file
+5.webpack.config.js
+6.make dev an build scripts // make them in the webpack configuration file
+7 in src folder make index.js and load App.js
+8. in componets folder make the App.js
+9 in templates folder make the index.html file also where main.js would rest that comes from compiled js from webpack
+10.render the frontend/index.html in the views file in frontend app
+11.make urls.py in frontend app
+12.link fronted urls in main project
+13. add the --watch tag in script
+
+
++++++=======
+.babelrc
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["transform-class-properties"]
+}
+++++++++++++++++++=====
+.webpack.config.js
+const path = require('path');
+module.exports = {
+  context: path.join(__dirname, './Leadsmanager/frontend/src'),
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        },
+      },
+    ],
+  },
+  entry: './index.js', // your entry file that you want it to be bundled for production
+  output: {
+    // the output file path,
+    path: path.resolve(__dirname, './Leadsmanager/frontend/static/frontend'), // build is your folder name.
+    filename: 'main.js', // your specific filename to be built in the build folder.
+  },
+
+  resolveLoader: {
+    modules: [path.join(__dirname, 'node_modules')],
+  },
+  resolve: {
+    modules: [path.join(__dirname, 'node_modules')],
+  },
+};
+
+=======scripts======
+  "scripts": {
+    "dev": "webpack --mode development --watch",
+    "build": "webpack --mode production ./Leadsmanager/frontend/src/index.js --output-filename ./Leadsmanager/frontend/static/frontend/main.js"
+  },
