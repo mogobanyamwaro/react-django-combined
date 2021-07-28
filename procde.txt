@@ -48,6 +48,7 @@ react-dom
 11.make urls.py in frontend app
 12.link fronted urls in main project
 13. add the --watch tag in script
+14. run -> npm run dev to generate the main.js file
 
 
 +++++=======
